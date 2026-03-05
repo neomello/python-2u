@@ -483,61 +483,6 @@ textarea::placeholder {
   font-weight: 500;
 }
 
-.wdot-y {
-  background: rgba(254, 188, 46, 0.6);
-}
-
-.wdot-g {
-  background: rgba(40, 200, 64, 0.6);
-}
-
-.glass-filename {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.25);
-  margin-left: 4px;
-}
-
-textarea {
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: "Nunito", sans-serif;
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.65;
-  padding: 20px 22px;
-  resize: none;
-  min-height: 100px;
-}
-
-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.18);
-  font-style: italic;
-}
-
-.glass-footer {
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.g-char-pill {
-  background: rgba(167, 139, 250, 0.08);
-  border: 1px solid rgba(167, 139, 250, 0.2);
-  border-radius: 99px;
-  padding: 3px 10px;
-  font-size: 11px;
-  color: rgba(167, 139, 250, 0.6);
-}
-
-.g-hint {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.15);
-}
 
 .divider {
   display: flex;
