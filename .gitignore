@@ -13,6 +13,10 @@ npm-debug.log*
 *.log
 coverage/
 
+# Build artifacts (kept local)
+dist/favicon.ico
+dist/robots.txt
+
 # Editors
 .idea/
 .vscode/
