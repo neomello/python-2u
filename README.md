@@ -5,19 +5,12 @@
 █▄▄ █▄█ █▄▀ ██▄   █▀▀ ░█░ ░█░ █▀█ █▄█ █░▀█   █▄▄░ █▄█░
 ```
 
-
-Multichain-inspired interface for human-to-code
-logic translation.
-
-> **Version:** v1.0.0  
-> **License:** MIT  
-> **Protocol:** NΞØ Protocol
-> **Tech:** Vanilla JS + HTML5
+**Communication between humans would be much clearer if it were code written in Python.**
 
 <div align="center">
-  <img src="images/neo-smart-factory-horizontal.png" width="400" />
-  <br/><br/>
-  <iframe src="https://github.com/sponsors/neomello/button" title="Sponsor neomello" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
+  <a href="https://github.com/sponsors/neomello">
+    <img src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86" alt="Sponsor neomello" height="32">
+  </a>
 </div>
 
 ────────────────────────────────────────
@@ -60,7 +53,7 @@ Built under **NΞØ Protocol** standards — combining Web2 glassmorphism inputs
 ┃    └─ Written in pure Vanilla JS, CSS3, HTML5
 ┃
 ┃ 🌍 SEO & Social Ready
-┃    └─ Optimized OpenGraph tags & 
+┃    └─ Optimized OpenGraph tags &
 ┃       technical accessibility.
 ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -70,14 +63,14 @@ Built under **NΞØ Protocol** standards — combining Web2 glassmorphism inputs
 
 ## 🛠 Tech Stack
 
-| Layer | Choice | Rationale |
-| :--- | :--- | :--- |
-| **Logic** | Vanilla JavaScript | High performance, zero dependency chain. |
-| **Styling** | Vanilla CSS + Variables | Glassmorphism, grid overlays, and custom themes. |
-| **Typography** | Syne + Fira Code | Modern brutalism meets functional monospace. |
-| **Animation** | CSS Keyframes + JS Promises | Smooth transitions and sequenced "boot" logs. |
-| **SEO** | Meta Tags + robots.txt | Prepared for indexing and social sharing clarity. |
-| **Build** | Makefile | Simple automation for local dev and build tasks. |
+| Layer          | Choice                        | Why it matters                                              |
+| -------------- | ----------------------------- | ----------------------------------------------------------- |
+| **Logic**      | `Vanilla JavaScript`          | Fast runtime with zero dependency chain.                    |
+| **Styling**    | `Vanilla CSS` + CSS Variables | Glassmorphism, grid overlays, and fully custom theming.     |
+| **Typography** | `Syne` + `Fira Code`          | Bold visual identity with functional monospace readability. |
+| **Animation**  | CSS Keyframes + JS Promises   | Controlled transitions with sequenced boot logs.            |
+| **SEO**        | Meta tags + `robots.txt`      | Ready for indexing and clean social previews.               |
+| **Build**      | `Makefile`                    | Minimal automation for local dev and static build.          |
 
 ────────────────────────────────────────
 
@@ -95,7 +88,9 @@ make dev
 ```
 
 ### Build for Distribution
+
 To generate a clean `dist/` folder for deployment:
+
 ```bash
 make build
 ```
@@ -174,7 +169,7 @@ This project is open-source and maintained by **MELLØ** under the **NΞØ Proto
 - **Protocol:**
   NΞØ Protocol
 - **License:**
-  MIT — Build what you want. Ship it. 
+  MIT — Build what you want. Ship it.
   Just keep the NΞØ credits in the footer.
 
 ────────────────────────────────────────
@@ -185,11 +180,17 @@ This project is open-source and maintained by **MELLØ** under the **NΞØ Proto
 
 **[NΞØ PROTOCOL](https://neoprotocol.space)** · neoprotocol.space
 
-*"Import NoCODE.webapp"*
+_"Import NoCODE.webapp"_
 
 <br/>
 
 <iframe src="https://github.com/sponsors/neomello/card" title="Sponsor neomello" height="225" width="600" style="border: 0;"></iframe>
 
-© 2026 NΞØ Protocol · Built with code by MELLØ
+© 2026 NΞØ Protocol · Built with code by NEØ MELLØ
+
+> **Version:** v1.0.0  
+> **License:** MIT  
+> **Protocol:** NΞØ Protocol
+> **Tech:** Vanilla JS + HTML5
+
 </div>
