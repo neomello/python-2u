@@ -1,5 +1,10 @@
 <div align="center">
 
+<img src="images/neo-smart-factory-horizontal.png" width="400" />
+
+<br/>
+<br/>
+
 <iframe src="https://github.com/sponsors/neomello/button" title="Sponsor neomello" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
 
 # Code Python // Message APP
