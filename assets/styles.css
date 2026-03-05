@@ -366,29 +366,37 @@ main {
 
 .glass-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  /* Light mode / iPhone feel */
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  /* More rounded */
   padding: 6px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 .glass-inner {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.025);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   overflow: hidden;
 }
 
 .glass-topbar {
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -396,17 +404,83 @@ main {
 
 .wdots {
   display: flex;
-  gap: 5px;
+  gap: 6px;
 }
 
 .wdot {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
 }
 
 .wdot-r {
-  background: rgba(255, 95, 87, 0.6);
+  background: #ff5f57;
+  opacity: 0.8;
+}
+
+.wdot-y {
+  background: #febc2e;
+  opacity: 0.8;
+}
+
+.wdot-g {
+  background: #28c840;
+  opacity: 0.8;
+}
+
+.glass-filename {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.4);
+  margin-left: 6px;
+  font-family: -apple-system, sans-serif;
+  letter-spacing: 0.2px;
+}
+
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #1d1d1f;
+  /* iPhone Typography */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 24px;
+  resize: none;
+  min-height: 120px;
+}
+
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+  font-style: normal;
+}
+
+.glass-footer {
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.g-char-pill {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 99px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+
+.g-hint {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 500;
 }
 
 .wdot-y {
