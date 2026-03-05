@@ -1,20 +1,13 @@
 'use strict';
 
 const logs = [
-  'INCOMING HTTP REQUEST DETECTED ...',
-  'SERVICE WAKING UP ...',
-  'ASCII_ART',
-  'ALLOCATING COMPUTE RESOURCES ...',
-  'PREPARING INSTANCE FOR INITIALIZATION ...',
-  'STARTING THE INSTANCE ...',
-  'ENVIRONMENT VARIABLES INJECTED ...',
-  'FINALIZING STARTUP ...',
-  'OPTIMIZING DEPLOYMENT ...',
-  'STEADY HANDS. CLEAN LOGS. YOUR APP IS ALMOST LIVE ...'
+  'ASCII_ART'
 ];
+
 const ascii = `
-█▄░█ █▀▀ █▀█  █▀█ █▀█ █▀█ ▀█▀ █▀█ █▀▀ █▀█ █░░
-█░▀█ ██▄ █▄█  █▀▀ █▀▄ █▄█ ░█░ █▄█ █▄▄ █▄█ █▄▄`;
+█▀▀ █▀█ █▀▄ █▀▀   █▀█ █▄█ ▀█▀ █░█ █▀█ █▄░█   ▀ █  █░█
+█▄▄ █▄█ █▄▀ ██▄   █▀▀ ░█░ ░█░ █▀█ █▄█ █░▀█   █▄▄░ █▄█░
+`;
 
 // ── UTILS ─────────────────────────────────────────────────────────────────────
 
@@ -99,12 +92,10 @@ function v1(raw) {
   const name = snake(raw);
   const trimmed = raw.trim();
   let o = '';
-
   o += ln() + C(trunc(trimmed)) + '\n';
   o += ln() + V(name) + Op(' = ') + S(quoteSafe(trunc(trimmed, 50))) + '\n';
   o += ln() + '\n';
   o += ln() + F('print') + Op('(') + K('f') + S(`{${name}}`) + Op(')');
-
   return o;
 }
 
@@ -114,12 +105,10 @@ function v2(raw) {
   const ws = words(raw);
   const arg = snake(ws[ws.length - 1] || 'x');
   let o = '';
-
   o += ln() + C('© NEØ Protocol') + '\n';
   o += ln() + KW('def ') + F(fname) + Op('(') + V(arg) + Op(': ') + KW('str') + Op(') -> ') + KW('str') + Op(':') + '\n';
   o += ln() + '    ' + S(quoteSafe(trunc(raw.trim(), 50))) + '\n';
   o += ln() + '    ' + K('return ') + K('f') + S(`{${arg}.upper()}`);
-
   return o;
 }
 
@@ -128,7 +117,6 @@ function v3(raw) {
   const ws = words(raw).slice(0, 5);
   const name = cls(raw.slice(0, 20)).toUpperCase();
   let o = '';
-
   o += ln() + C('vibe check') + '\n';
   o += ln() + V(name) + Op(' = ') + Op('{') + '\n';
   ws.forEach((word, i) => {
@@ -137,7 +125,6 @@ function v3(raw) {
   o += ln() + Op('}') + '\n';
   o += ln() + '\n';
   o += ln() + V('estado') + Op(' = ') + V(name) + Op('[') + S(quoteSafe(ws[0] || '?')) + Op(']');
-
   return o;
 }
 
@@ -145,7 +132,6 @@ function v4(raw) {
   resetLineNumber();
   const fname = snake(raw.slice(0, 24));
   let o = '';
-
   o += ln() + KW('try') + Op(':') + '\n';
   o += ln() + '    ' + F(fname) + Op('()') + '\n';
   o += ln() + '    ' + F('print') + Op('(') + G('"✓ ') + G(quoteSafe(trunc(raw.trim(), 34))) + G('"') + Op(')') + '\n';
@@ -153,7 +139,6 @@ function v4(raw) {
   o += ln() + '    ' + F('print') + Op('(') + K('f') + S('erro: {e}') + Op(')') + '\n';
   o += ln() + KW('finally') + Op(':') + '\n';
   o += ln() + '    ' + KW('import') + G(' NoCODE.webapp') + '  ' + C('sempre python');
-
   return o;
 }
 
@@ -163,7 +148,6 @@ function v5(raw) {
   const items = ws.slice(0, 5).map((w) => S(w.toLowerCase())).join(Op(', '));
   const item = snake(ws[0] || 'x');
   let o = '';
-
   o += ln() + C(trunc(raw.trim(), 50)) + '\n';
   o += ln() + V('vida') + Op(' = [') + items + Op(']') + '\n';
   o += ln() + '\n';
@@ -172,7 +156,6 @@ function v5(raw) {
   o += ln() + '    ' + KW('for ') + V(item) + KW(' in ') + V('vida') + '\n';
   o += ln() + '    ' + KW('if ') + V(item) + Op(' != ') + S('') + '\n';
   o += ln() + Op(']');
-
   return o;
 }
 
@@ -181,7 +164,6 @@ function v6(raw) {
   const ws = words(raw).slice(0, 4);
   const name = cls(raw.slice(0, 24)) || 'Momento';
   let o = '';
-
   o += ln() + Y('@dataclass') + '\n';
   o += ln() + KW('class ') + F(name) + Op(':') + '\n';
   ws.forEach((word) => {
@@ -194,7 +176,6 @@ function v6(raw) {
     o += ln() + '    ' + V(snake(word)) + Op('=') + S(quoteSafe(word.toLowerCase())) + (i < ws.length - 1 ? Op(',') : '') + '\n';
   });
   o += ln() + Op(')');
-
   return o;
 }
 
@@ -271,7 +252,7 @@ async function startLoader() {
       logContainer.appendChild(block);
       await wait(100);
       block.classList.add('active');
-      await wait(800);
+      await wait(1200);
       continue;
     }
 
@@ -279,28 +260,14 @@ async function startLoader() {
     line.className = 'log-line';
     line.innerHTML = `
       <span class="log-ts">${getTimestamp()}</span>
-      <span class="log-msg ${msg.includes('LIVE') ? 'highlight' : ''}">${escapeHtml(msg)}</span>`;
+      <span class="log-msg">${escapeHtml(msg)}</span>`;
     logContainer.appendChild(line);
     await wait(50);
     line.classList.add('active');
     await wait(Math.random() * 400 + 200);
   }
 
-  setTimeout(() => loader.classList.add('hidden'), 1000);
-}
-
-// ── DEV PRANK ─────────────────────────────────────────────────────────────────
-
-function devPrank() {
-  setTimeout(() => {
-    console.log('%c NEØ PROTOCOL // SYSTEM OVERRIDE ', 'background:#f85149;color:#fff;font-weight:bold;padding:4px;');
-    console.log('%c[!] Warning: Reality.py has been modified.', 'color:#f85149;');
-    console.log('%c[i] Establishing proxy through 127.0.0.1...', 'color:#79c0ff;');
-    console.log('%c[✓] Root access granted. Downloading cookies...', 'color:#3fb950;');
-    setTimeout(() => {
-      console.log('%c I GET // U - Its a joke ', 'background:#3fb950;color:#000;font-weight:bold;padding:4px;');
-    }, 3000);
-  }, 2000);
+  setTimeout(() => loader.classList.add('hidden'), 500);
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
@@ -330,7 +297,6 @@ function init() {
   inputEl.addEventListener('input', (event) => render(event.target.value));
 
   render('');
-  devPrank();
 }
 
 document.addEventListener('DOMContentLoaded', init);
