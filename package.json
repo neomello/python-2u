@@ -1,0 +1,13 @@
+{
+  "name": "python-2u",
+  "version": "1.0.0",
+  "description": "![NEØ Logo](images/neo-smart-factory-horizontal.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

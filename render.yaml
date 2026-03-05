@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: neo-python-message
+    env: static
+    buildCommand: ""
+    publishPath: "."

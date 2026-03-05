@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Python // Message APP — NEØ Protocol</title>
+  <meta name="description"
+    content="Communication between humans would be much clearer if it were code written in Python.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Nunito:wght@300;400;600;700;800&family=Syne:wght@400;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --neo-green: #3fb950;
+      --neo-green-dim: rgba(63, 185, 80, 0.15);
+      --neo-green-glow: rgba(63, 185, 80, 0.25);
+      --bg: #09090f;
+      --card: #0d1117;
+      --card2: #161b22;
+      --border: #21262d;
+      --border2: #30363d;
+      --text: #e6edf3;
+      --sub: #8b949e;
+      --purple: #cba6f7;
+      --blue: #79c0ff;
+      --orange: #f0883e;
+      --red: #f85149;
+      --yellow: #e3b341;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Fira Code', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── SCANLINE OVERLAY ────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.03) 2px,
+          rgba(0, 0, 0, 0.03) 4px);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── AMBIENT GLOW ────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 700px 500px at 85% 5%, rgba(63, 185, 80, 0.05) 0%, transparent 65%),
+        radial-gradient(ellipse 500px 400px at 5% 95%, rgba(121, 192, 255, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── GRID PATTERN ────────────────────────────── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(63, 185, 80, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(63, 185, 80, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 9, 15, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+      filter: brightness(1.1);
+    }
+
+    .nav-slash {
+      color: var(--border2);
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    .nav-app {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--sub);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-pill {
+      background: var(--neo-green-dim);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      border-radius: 99px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: var(--neo-green);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--neo-green);
+      box-shadow: 0 0 8px var(--neo-green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(.8)
+      }
+    }
+
+    /* ── MAIN WRAP ───────────────────────────────── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 20px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--neo-green);
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5.5vw, 52px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--text);
+      letter-spacing: -1px;
+    }
+
+    .hero-title .slash {
+      color: var(--neo-green);
+      text-shadow: 0 0 30px var(--neo-green-glow);
+    }
+
+    .hero-sub {
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      color: var(--sub);
+      line-height: 1.6;
+      max-width: 520px;
+      font-weight: 400;
+    }
+
+    .hero-sub em {
+      font-style: italic;
+      color: rgba(203, 166, 247, 0.7);
+    }
+
+    /* ── WEB2 INPUT ──────────────────────────────── */
+    .input-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .section-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-tag .tag-label {
+      color: var(--sub);
+    }
+
+    .section-tag .tag-chip {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .web2-chip {
+      background: rgba(121, 192, 255, 0.1);
+      border: 1px solid rgba(121, 192, 255, 0.25);
+      color: var(--blue);
+    }
+
+    .web3-chip {
+      background: var(--neo-green-dim);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      color: var(--neo-green);
+    }
+
+    /* GLASS CARD */
+    .glass-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 6px;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 1px 0 rgba(255, 255, 255, 0.06) inset;
+      overflow: hidden;
+    }
+
+    /* subtle aurora inside glass */
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .glass-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .glass-inner {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.025);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+    }
+
+    .glass-topbar {
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wdots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .wdot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .wdot-r {
+      background: rgba(255, 95, 87, 0.6);
+    }
+
+    .wdot-y {
+      background: rgba(254, 188, 46, 0.6);
+    }
+
+    .wdot-g {
+      background: rgba(40, 200, 64, 0.6);
+    }
+
+    .glass-filename {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.25);
+      margin-left: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: rgba(255, 255, 255, 0.85);
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.65;
+      padding: 20px 22px;
+      resize: none;
+      min-height: 100px;
+      caret-color: rgba(167, 139, 250, 0.9);
+      letter-spacing: 0.1px;
+    }
+
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.18);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .glass-footer {
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .g-char-pill {
+      background: rgba(167, 139, 250, 0.08);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      border-radius: 99px;
+      padding: 3px 10px;
+      font-size: 11px;
+      color: rgba(167, 139, 250, 0.6);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .g-hint {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.15);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* ── DIVIDER ─────────────────────────────────── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: -8px 0;
+    }
+
+    .div-line-left {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(167, 139, 250, 0.2) 40%, rgba(63, 185, 80, 0.2));
+    }
+
+    .div-line-right {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to left, transparent, rgba(63, 185, 80, 0.3));
+    }
+
+    .div-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      background: conic-gradient(from 180deg, rgba(255, 255, 255, 0.06) 0%, rgba(63, 185, 80, 0.12) 50%, rgba(255, 255, 255, 0.04) 100%);
+      border: 1px solid var(--border);
+      color: var(--neo-green);
+      flex-shrink: 0;
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ── WEB3 OUTPUT ─────────────────────────────── */
+    .output-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .variants {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* terminal card */
+    .tcard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .tcard:hover {
+      border-color: rgba(63, 185, 80, 0.35);
+      box-shadow: 0 4px 24px rgba(63, 185, 80, 0.07);
+    }
+
+    .tcard-header {
+      background: var(--card2);
+      border-bottom: 1px solid var(--border);
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tdots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .tdot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .tdot-r {
+      background: #ff5f57;
+    }
+
+    .tdot-y {
+      background: #febc2e;
+    }
+
+    .tdot-g {
+      background: #28c840;
+    }
+
+    .tcard-name {
+      font-size: 11px;
+      color: #484f58;
+      letter-spacing: 0.3px;
+    }
+
+    .copy-btn {
+      margin-left: auto;
+      background: none;
+      border: 1px solid var(--border2);
+      border-radius: 5px;
+      color: var(--sub);
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      padding: 3px 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--neo-green);
+      color: var(--neo-green);
+    }
+
+    .copy-btn.done {
+      border-color: var(--neo-green);
+      color: var(--neo-green);
+    }
+
+    .tcard-body {
+      padding: 18px 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.9;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #e6edf3;
+    }
+
+    .ln {
+      display: inline-block;
+      width: 2em;
+      color: #21262d;
+      user-select: none;
+      margin-right: 14px;
+      text-align: right;
+    }
+
+    /* syntax */
+    .k {
+      color: #ff7b72;
+    }
+
+    .kw {
+      color: #cba6f7;
+    }
+
+    .s {
+      color: #a5d6ff;
+    }
+
+    .f {
+      color: #d2a8ff;
+    }
+
+    .c {
+      color: #484f58;
+      font-style: italic;
+    }
+
+    .v {
+      color: #79c0ff;
+    }
+
+    .n {
+      color: #f0883e;
+    }
+
+    .op {
+      color: #8b949e;
+    }
+
+    .g {
+      color: #3fb950;
+    }
+
+    .y {
+      color: #e3b341;
+    }
+
+    .e {
+      color: #f85149;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 44px;
+      font-size: 12px;
+      color: #21262d;
+      font-style: italic;
+    }
+
+    .empty-cursor {
+      display: inline-block;
+      color: var(--neo-green);
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: rgba(9, 9, 15, 0.6);
+      backdrop-filter: blur(8px);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo img {
+      height: 20px;
+      width: auto;
+      opacity: 0.7;
+      filter: brightness(1.1);
+    }
+
+    .footer-copy {
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      color: #30363d;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-copy a {
+      color: #484f58;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-copy a:hover {
+      color: var(--neo-green);
+    }
+
+    .footer-right {
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      color: #21262d;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 540px) {
+      nav {
+        padding: 10px 16px;
+      }
+
+      main {
+        padding: 36px 14px 32px;
+      }
+
+      footer {
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-title {
+        letter-spacing: -0.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://neoprotocol.space" target="_blank" rel="noopener" class="nav-logo">
+      <img src="images/neoprotocol.png" alt="NEØ Protocol" />
+      <span class="nav-slash">/</span>
+      <span class="nav-app">Code Python // Message</span>
+    </a>
+    <div class="nav-right">
+      <span class="nav-pill">live</span>
+      <div class="nav-dot"></div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="wrap">
+
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-eyebrow">NEØ Protocol · Message App</div>
+        <h1 class="hero-title">Code Python <span class="slash">//</span><br>Message APP</h1>
+        <p class="hero-sub">
+          <em>Communication between humans would be much clearer if it were code written in Python.</em><br>
+          Your phrase. Your code. Your caption.
+        </p>
+      </div>
+
+      <!-- INPUT -->
+      <div class="input-section">
+        <div class="section-tag">
+          <span class="tag-label">input</span>
+          <span class="tag-chip web2-chip">web2</span>
+          <span class="tag-label" style="color:#21262d">·</span>
+          <span class="tag-label" style="color:#30363d">input.txt</span>
+        </div>
+
+        <div class="glass-card">
+          <div class="glass-inner">
+            <div class="glass-topbar">
+              <div class="wdots">
+                <div class="wdot wdot-r"></div>
+                <div class="wdot wdot-y"></div>
+                <div class="wdot wdot-g"></div>
+              </div>
+              <span class="glass-filename">input.txt</span>
+            </div>
+            <textarea id="txt" placeholder="write anything here..." spellcheck="false" rows="3"></textarea>
+            <div class="glass-footer">
+              <span class="g-char-pill" id="cc">0 chars</span>
+              <span class="g-hint">type and it becomes code ✦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="divider">
+        <div class="div-line-left"></div>
+        <div class="div-icon">→</div>
+        <div class="div-line-right"></div>
+      </div>
+
+      <!-- OUTPUT -->
+      <div class="output-section">
+        <div class="section-tag">
+          <span class="tag-label">output</span>
+          <span class="tag-chip web3-chip">web3</span>
+          <span class="tag-label" style="color:#21262d">·</span>
+          <span class="tag-label" style="color:#30363d">main.py</span>
+        </div>
+
+        <div class="variants" id="variants">
+          <div class="tcard">
+            <div class="tcard-body empty-state">
+              <span style="color:#30363d">$ </span>awaiting input...<span class="empty-cursor">▌</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-logo">
+        <img src="images/neowhite.png" alt="NEØ" />
+      </div>
+      <span class="footer-copy">
+        © <span id="yr"></span> <a href="https://neoprotocol.space" target="_blank" rel="noopener">NEØ PROTOCOL</a> ·
+        neoprotocol.space
+      </span>
+    </div>
+    <div class="footer-right">import antigravity</div>
+  </footer>
+
+  <script>
+    // ── ano dinâmico ─────────────────────────────────────────
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // ── helpers ──────────────────────────────────────────────
+    function snake(s) {
+      return (s || '').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, '').trim()
+        .split(/\s+/).filter(Boolean).join('_') || 'valor';
+    }
+    function cls(s) {
+      return snake(s).split('_').map(x => x ? x[0].toUpperCase() + x.slice(1) : '').join('') || 'Classe';
+    }
+    function wds(s) {
+      return (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/gi, ' ').trim().split(/\s+/).filter(Boolean);
+    }
+    function qs(s) { return (s || '').replace(/"/g, "'"); }
+    function trunc(s, n = 36) { return s.length > n ? s.slice(0, n) + '…' : s; }
+
+    // ── span builders ─────────────────────────────────────────
+    const K = t => `<span class="k">${t}</span>`;
+    const KW = t => `<span class="kw">${t}</span>`;
+    const S = t => `<span class="s">"${t}"</span>`;
+    const F = t => `<span class="f">${t}</span>`;
+    const C = t => `<span class="c"># ${t}</span>`;
+    const V = t => `<span class="v">${t}</span>`;
+    const N = t => `<span class="n">${t}</span>`;
+    const Op = t => `<span class="op">${t}</span>`;
+    const G = t => `<span class="g">${t}</span>`;
+    const Y = t => `<span class="y">${t}</span>`;
+    const E = t => `<span class="e">${t}</span>`;
+
+    let _ln = 0;
+    const resetLn = () => { _ln = 0; };
+    const ln = () => { _ln++; return `<span class="ln">${String(_ln).padStart(2, ' ')}</span>`; };
+
+    // ── variantes ────────────────────────────────────────────
+    function v1(raw) {
+      resetLn();
+      const name = snake(raw), ws = wds(raw);
+      let o = '';
+      o += ln() + C(trunc(raw.trim())) + '\n';
+      o += ln() + V(name) + Op(' = ') + S(qs(trunc(raw.trim(), 50))) + '\n';
+      if (ws.length > 1) o += ln() + V(snake(ws.slice(0, 2).join(' '))) + Op(' = ') + KW('True') + '\n';
+      o += ln() + '\n';
+      o += ln() + F('print') + Op('(') + K('f') + `<span class="s">"{${name}}"</span>` + Op(')');
+      return o;
+    }
+
+    function v2(raw) {
+      resetLn();
+      const fname = snake(raw.slice(0, 28)), ws = wds(raw);
+      const arg = snake(ws[ws.length - 1] || 'x');
+      let o = '';
+      o += ln() + C('© NEØ Protocol') + '\n';
+      o += ln() + KW('def ') + F(fname) + Op('(') + V(arg) + Op(': ') + KW('str') + Op(') -> ') + KW('str') + Op(':') + '\n';
+      o += ln() + '    ' + S(qs(trunc(raw.trim(), 50))) + '\n';
+      o += ln() + '    ' + K('return ') + K('f') + `<span class="s">"{${arg}.upper()}"</span>`;
+      return o;
+    }
+
+    function v3(raw) {
+      resetLn();
+      const ws = wds(raw).slice(0, 5), name = cls(raw.slice(0, 20)).toUpperCase();
+      let o = '';
+      o += ln() + C('vibe check') + '\n';
+      o += ln() + V(name) + Op(' = ') + Op('{') + '\n';
+      ws.forEach((w, i) => { o += ln() + '    ' + S(w.toLowerCase()) + Op(': ') + N(i + 1) + (i < ws.length - 1 ? Op(',') : '') + '\n'; });
+      o += ln() + Op('}') + '\n';
+      o += ln() + '\n';
+      o += ln() + V('estado') + Op(' = ') + V(name) + Op('[' + S(qs(ws[0] || '?')) + ']');
+      return o;
+    }
+
+    function v4(raw) {
+      resetLn();
+      const fname = snake(raw.slice(0, 24));
+      let o = '';
+      o += ln() + KW('try') + Op(':') + '\n';
+      o += ln() + '    ' + F(fname) + Op('()') + '\n';
+      o += ln() + '    ' + F('print') + Op('(') + G('"✓ ') + G(qs(trunc(raw.trim(), 34))) + G('"') + Op(')') + '\n';
+      o += ln() + KW('except ') + E('Exception') + Op(' as ') + V('e') + Op(':') + '\n';
+      o += ln() + '    ' + F('print') + Op('(') + K('f') + `<span class="s">"erro: {e}"</span>` + Op(')') + '\n';
+      o += ln() + KW('finally') + Op(':') + '\n';
+      o += ln() + '    ' + KW('import') + G(' antigravity') + '  ' + C('sempre 🐍');
+      return o;
+    }
+
+    function v5(raw) {
+      resetLn();
+      const ws = wds(raw);
+      const itens = ws.slice(0, 5).map(w => S(w.toLowerCase())).join(Op(', '));
+      const item = snake(ws[0] || 'x');
+      let o = '';
+      o += ln() + C(trunc(raw.trim(), 50)) + '\n';
+      o += ln() + V('vida') + Op(' = [') + itens + Op(']') + '\n';
+      o += ln() + '\n';
+      o += ln() + V('resultado') + Op(' = [') + '\n';
+      o += ln() + '    ' + V(item) + '\n';
+      o += ln() + '    ' + KW('for ') + V(item) + KW(' in ') + V('vida') + '\n';
+      o += ln() + '    ' + KW('if ') + V(item) + Op(' != ') + S('') + '\n';
+      o += ln() + Op(']');
+      return o;
+    }
+
+    function v6(raw) {
+      resetLn();
+      const ws = wds(raw).slice(0, 4), name = cls(raw.slice(0, 24)) || 'Momento';
+      let o = '';
+      o += ln() + Y('@dataclass') + '\n';
+      o += ln() + KW('class ') + F(name) + Op(':') + '\n';
+      ws.forEach(w => { o += ln() + '    ' + V(snake(w)) + Op(': ') + KW('str') + '\n'; });
+      o += ln() + '\n';
+      o += ln() + C('instantiating reality') + '\n';
+      o += ln() + V('now') + Op(' = ') + F(name) + Op('(') + '\n';
+      ws.forEach((w, i) => { o += ln() + '    ' + V(snake(w)) + Op('=') + S(qs(w.toLowerCase())) + (i < ws.length - 1 ? Op(',') : '') + '\n'; });
+      o += ln() + Op(')');
+      return o;
+    }
+
+    const VARIANTS = [
+      { fn: v1, name: 'variable · 01' },
+      { fn: v2, name: 'function · 02' },
+      { fn: v3, name: 'dict / enum · 03' },
+      { fn: v4, name: 'try / except · 04' },
+      { fn: v5, name: 'list comprehension · 05' },
+      { fn: v6, name: 'dataclass · 06' },
+    ];
+
+    function buildCard(v, i, raw) {
+      return `
+    <div class="tcard">
+      <div class="tcard-header">
+        <div class="tdots"><div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div></div>
+        <span class="tcard-name">main_${String(i + 1).padStart(2, '0')}.py · ${v.name}</span>
+        <button class="copy-btn" onclick="copyCard(this,${i})">copy</button>
+      </div>
+      <div class="tcard-body" id="vb-${i}">${v.fn(raw)}</div>
+    </div>`;
+    }
+
+    function render(raw) {
+      document.getElementById('cc').textContent = raw.length + ' chars';
+      if (!raw.trim()) {
+        document.getElementById('variants').innerHTML = `
+      <div class="tcard">
+        <div class="tcard-body empty-state">
+          <span style="color:#30363d">$ </span>awaiting input...<span class="empty-cursor">▌</span>
+        </div>
+      </div>`;
+        return;
+      }
+      document.getElementById('variants').innerHTML = VARIANTS.map((v, i) => buildCard(v, i, raw)).join('');
+    }
+
+    function copyCard(btn, idx) {
+      const el = document.getElementById('vb-' + idx);
+      navigator.clipboard.writeText(el.innerText.replace(/^\s*\d+\s/gm, '')).then(() => {
+        btn.textContent = 'copied ✓'; btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('done'); }, 1800);
+      });
+    }
+
+    document.getElementById('txt').addEventListener('input', e => render(e.target.value));
+    render('');
+  </script>
+</body>
+
+</html>
