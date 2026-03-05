@@ -22,6 +22,7 @@ build:
 	@echo "Building static site..."
 	@mkdir -p dist
 	@cp index.html dist/
+	@cp -r assets dist/ || true
 	@cp -r images dist/ || true
 	@echo "Build complete. Files are in dist/"
 
