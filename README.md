@@ -179,17 +179,12 @@ This project is open-source and maintained by **MELLØ** under the **NΞØ Proto
   Just keep the NΞØ credits in the footer.
 
 ────────────────────────────────────────
-
 <div>
-
-<img src="images/neowhite.png" width="80" />
-
+  
 **[NΞØ PROTOCOL](https://neoprotocol.space)** · neoprotocol.space
 
 <br/>
 
-<iframe src="https://github.com/sponsors/neomello/card" title="Sponsor neomello" height="225" width="600" style="border: 0;"></iframe>
-
-© 2026 NΞØ Protocol · Built with code by NEØ MELLØ
+ · code by NEØ MELLØ
 
 </div>
