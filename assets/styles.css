@@ -3,16 +3,12 @@
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(
-      circle at 20% 20%,
+    radial-gradient(circle at 20% 20%,
       rgba(63, 185, 80, 0.08),
-      transparent 38%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
+      transparent 38%),
+    radial-gradient(circle at 80% 80%,
       rgba(121, 192, 255, 0.08),
-      transparent 42%
-    ),
+      transparent 42%),
     #05070d;
   z-index: 99999;
   display: flex;
@@ -150,13 +146,11 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px);
   pointer-events: none;
   z-index: 9999;
 }
@@ -166,16 +160,12 @@ body::after {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 700px 500px at 85% 5%,
+    radial-gradient(ellipse 700px 500px at 85% 5%,
       rgba(63, 185, 80, 0.05) 0%,
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse 500px 400px at 5% 95%,
+      transparent 65%),
+    radial-gradient(ellipse 500px 400px at 5% 95%,
       rgba(121, 192, 255, 0.04) 0%,
-      transparent 60%
-    );
+      transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -259,6 +249,7 @@ nav {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
@@ -483,12 +474,10 @@ textarea::placeholder {
 .div-line-left {
   flex: 1;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(167, 139, 250, 0.2) 40%,
-    rgba(63, 185, 80, 0.2)
-  );
+  background: linear-gradient(to right,
+      transparent,
+      rgba(167, 139, 250, 0.2) 40%,
+      rgba(63, 185, 80, 0.2));
 }
 
 .div-line-right {
@@ -718,101 +707,36 @@ footer {
   color: #21262d;
 }
 
-.ecosystem {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  margin-top: 24px;
-}
-
-.ecosystem-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
-}
-
-.eco-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.eco-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.03),
-    transparent
-  );
-  transform: translateX(-100%);
-  transition: transform 0.6s;
-}
-
-.eco-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--border2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.eco-item:hover::before {
-  transform: translateX(100%);
-}
-
-.eco-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.eco-key {
-  font-family: "Syne", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
+.footer-ecosystem {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.eco-key::after {
-  content: "↗";
-  font-size: 10px;
-  color: var(--sub);
-  opacity: 0.5;
-}
-
-.eco-type {
+  gap: 10px;
   font-family: "Fira Code", monospace;
-  font-size: 10px;
-  color: var(--sub);
+  font-size: 11px;
+}
+
+.footer-eco-label {
+  color: #30363d;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-right: 4px;
 }
 
-.eco-status {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--border2);
-  transition: all 0.3s;
+.footer-ecosystem a {
+  color: var(--sub);
+  text-decoration: none;
+  transition: all 0.2s;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
-.eco-item:hover .eco-status {
-  background: var(--neo-green);
-  box-shadow: 0 0 8px var(--neo-green);
+.footer-ecosystem a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-ecosystem span {
+  color: #21262d;
 }
 
 .brand-quote {
