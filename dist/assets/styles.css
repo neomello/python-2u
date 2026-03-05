@@ -3,12 +3,16 @@
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 20%,
+    radial-gradient(
+      circle at 20% 20%,
       rgba(63, 185, 80, 0.08),
-      transparent 38%),
-    radial-gradient(circle at 80% 80%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
       rgba(121, 192, 255, 0.08),
-      transparent 42%),
+      transparent 42%
+    ),
     #05070d;
   z-index: 99999;
   display: flex;
@@ -146,11 +150,13 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: repeating-linear-gradient(0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.03) 2px,
-      rgba(0, 0, 0, 0.03) 4px);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
   pointer-events: none;
   z-index: 9999;
 }
@@ -160,12 +166,16 @@ body::after {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 700px 500px at 85% 5%,
+    radial-gradient(
+      ellipse 700px 500px at 85% 5%,
       rgba(63, 185, 80, 0.05) 0%,
-      transparent 65%),
-    radial-gradient(ellipse 500px 400px at 5% 95%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 500px 400px at 5% 95%,
       rgba(121, 192, 255, 0.04) 0%,
-      transparent 60%);
+      transparent 60%
+    );
   pointer-events: none;
   z-index: 0;
 }
@@ -249,7 +259,6 @@ nav {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;
@@ -376,7 +385,9 @@ main {
   padding: 6px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .glass-card:focus-within {
@@ -444,7 +455,8 @@ textarea {
   outline: none;
   color: #1d1d1f;
   /* iPhone Typography */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 19px;
   font-weight: 500;
   line-height: 1.5;
@@ -483,7 +495,6 @@ textarea::placeholder {
   font-weight: 500;
 }
 
-
 .divider {
   display: flex;
   align-items: center;
@@ -493,10 +504,12 @@ textarea::placeholder {
 .div-line-left {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right,
-      transparent,
-      rgba(167, 139, 250, 0.2) 40%,
-      rgba(63, 185, 80, 0.2));
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(167, 139, 250, 0.2) 40%,
+    rgba(63, 185, 80, 0.2)
+  );
 }
 
 .div-line-right {
@@ -610,6 +623,7 @@ textarea::placeholder {
   line-height: 1.9;
   color: #e6edf3;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .ln {
@@ -618,6 +632,9 @@ textarea::placeholder {
   color: #21262d;
   margin-right: 14px;
   text-align: right;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 
 .k {
@@ -729,33 +746,30 @@ footer {
 .footer-ecosystem {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: "Fira Code", monospace;
   font-size: 11px;
+  color: #484f58;
 }
 
 .footer-eco-label {
   color: #30363d;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-right: 4px;
+  text-transform: lowercase;
+  letter-spacing: 0.8px;
 }
 
 .footer-ecosystem a {
   color: var(--sub);
   text-decoration: none;
-  transition: all 0.2s;
-  padding: 2px 6px;
-  border-radius: 4px;
+  transition: color 0.2s;
 }
 
 .footer-ecosystem a:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
 }
 
 .footer-ecosystem span {
-  color: #21262d;
+  color: #30363d;
 }
 
 .brand-quote {
@@ -819,5 +833,10 @@ footer {
     padding: 16px;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .footer-ecosystem {
+    flex-wrap: wrap;
+    margin-top: 4px;
   }
 }
