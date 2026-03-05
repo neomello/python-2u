@@ -58,5 +58,5 @@ make dev
 <div align="center">
   <img src="images/neowhite.png" width="100" />
   <p>Built by <b>NEØ PROTOCOL</b> · 2026</p>
-  <p><i>"Import Antigravity"</i></p>
+  <p><i>"Import No CODE APP"</i></p>
 </div>
