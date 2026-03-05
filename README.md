@@ -9,15 +9,17 @@
 
 <div>
   <a href="https://github.com/sponsors/neomello">
-    <img src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86" alt="Sponsor neomello" height="32">
+    <img src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86" alt="Sponsor neomello" height="64">
   </a>
 </div>
 
 ────────────────────────────────────────
 <div align="center">
-    <img src="[https://res.cloudinary.com/dgyocpguk/image/upload/v1772704637/translate_2_python.png"]  height="32">
-  </a>
+  
+![Logo](https://res.cloudinary.com/dgyocpguk/image/upload/v1772704637/translate_2_python.png)
+
 </div>
+
 
 ## 🎯 What is this?
 
@@ -178,23 +180,16 @@ This project is open-source and maintained by **MELLØ** under the **NΞØ Proto
 
 ────────────────────────────────────────
 
-<div align="center">
+<div>
 
 <img src="images/neowhite.png" width="80" />
 
 **[NΞØ PROTOCOL](https://neoprotocol.space)** · neoprotocol.space
-
-_"Import NoCODE.webapp"_
 
 <br/>
 
 <iframe src="https://github.com/sponsors/neomello/card" title="Sponsor neomello" height="225" width="600" style="border: 0;"></iframe>
 
 © 2026 NΞØ Protocol · Built with code by NEØ MELLØ
-
-> **Version:** v1.0.0  
-> **License:** MIT  
-> **Protocol:** NΞØ Protocol
-> **Tech:** Vanilla JS + HTML5
 
 </div>
