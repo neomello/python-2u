@@ -1,183 +1,195 @@
-<div align="center">
+<!-- markdownlint-disable MD003 MD007 MD013 MD022 MD023 MD025 MD029 MD032 MD033 MD034 -->
 
-<img src="images/neo-smart-factory-horizontal.png" width="400" />
-
-<br/>
-<br/>
-
-<iframe src="https://github.com/sponsors/neomello/button" title="Sponsor neomello" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
-
-# Code Python // Message APP
-
-```
+```text
 █▀▀ █▀█ █▀▄ █▀▀   █▀█ █▄█ ▀█▀ █░█ █▀█ █▄░█   ▀ █  █░█
 █▄▄ █▄█ █▄▀ ██▄   █▀▀ ░█░ ░█░ █▀█ █▄█ █░▀█   █▄▄░ █▄█░
-
 ```
 
-**Communication between humans would be much clearer if it were code written in Python.**
 
-Your phrase. Your code. Your caption.
+Multichain-inspired interface for human-to-code
+logic translation.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-3fb950?style=flat-square&labelColor=0d1117)](LICENSE)
-[![NEØ Protocol](https://img.shields.io/badge/NEØ-Protocol-79c0ff?style=flat-square&labelColor=0d1117)](https://neoprotocol.space)
-[![Deploy](https://img.shields.io/badge/Deploy-Render-cba6f7?style=flat-square&labelColor=0d1117)](https://render.com)
-[![Sponsor](https://img.shields.io/badge/Sponsor-MELLØ-f0883e?style=flat-square&labelColor=0d1117)](https://github.com/sponsors/MELLO)
+> **Version:** v1.0.0  
+> **License:** MIT  
+> **Protocol:** NΞØ Protocol
+> **Tech:** Vanilla JS + HTML5
 
+<div align="center">
+  <img src="images/neo-smart-factory-horizontal.png" width="400" />
+  <br/><br/>
+  <iframe src="https://github.com/sponsors/neomello/button" title="Sponsor neomello" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
 </div>
 
----
+────────────────────────────────────────
 
-## What is this?
+## 🎯 What is this?
 
-A minimal, futuristic interface that converts any human sentence into Python code — in real time. Type a feeling, a thought, a caption idea. Get back 6 different Python representations of that same phrase, ready to copy and post.
+A minimal, futuristic interface that converts any human sentence into Python code — in real time. Type a feeling, a thought, or a caption idea. Get back **6 distinct Python representations** of that same phrase, formatted with syntax highlighting and ready to copy.
 
 No dependencies. No build step. No backend. Just a `.html` file with a soul.
 
-Built under **NEØ Protocol** standards — Web2 glassmorphism input, Web3 terminal output, and a boot sequence that makes you feel like you're deploying something that matters.
+Built under **NΞØ Protocol** standards — combining Web2 glassmorphism inputs with Web3 terminal outputs, and an animated boot sequence that makes every session feel like a deployment of reality.
 
----
+> **"Communication between humans would be much clearer if it were code written in Python."**
 
-## Features
+────────────────────────────────────────
 
-- **Real-time conversion** — every keystroke fires a new render
-- **6 code variants** — variable, function, dict/enum, try/except, list comprehension, dataclass
-- **Web2 → Web3 UI** — glassmorphism input panel transitions into a dark terminal output
-- **NEØ Boot Loader** — animated startup sequence with ASCII art on every page load
-- **One-click copy** — each variant has its own copy button
-- **Zero dependencies** — vanilla HTML, CSS, JS. No frameworks, no bundlers
-- **Static deploy ready** — Render.com config included out of the box
+## ⚡ Highlights
 
----
+```text
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ SYSTEM CAPABILITIES
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃
+┃ ⚡ Real-time Engine
+┃    └─ Instantly renders variants as you type.
+┃
+┃ 🧬 6 Variant Logic
+┃    └─ Variable, Function, Dict/Enum,
+┃       Try/Except, List Comprehension,
+┃       and Dataclass.
+┃
+┃ 💠 Hybrid UI Flow
+┃    └─ Apple glass input → Dark terminal output
+┃
+┃ 📟 NΞØ Boot Loader
+┃    └─ Custom animated startup sequence
+┃       with ASCII systems check.
+┃
+┃ 💎 Zero Framework Tax
+┃    └─ Written in pure Vanilla JS, CSS3, HTML5
+┃
+┃ 🌍 SEO & Social Ready
+┃    └─ Optimized OpenGraph tags & 
+┃       technical accessibility.
+┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-## Quick Start
+────────────────────────────────────────
+
+## 🛠 Tech Stack
+
+| Layer | Choice | Rationale |
+| :--- | :--- | :--- |
+| **Logic** | Vanilla JavaScript | High performance, zero dependency chain. |
+| **Styling** | Vanilla CSS + Variables | Glassmorphism, grid overlays, and custom themes. |
+| **Typography** | Syne + Fira Code | Modern brutalism meets functional monospace. |
+| **Animation** | CSS Keyframes + JS Promises | Smooth transitions and sequenced "boot" logs. |
+| **SEO** | Meta Tags + robots.txt | Prepared for indexing and social sharing clarity. |
+| **Build** | Makefile | Simple automation for local dev and build tasks. |
+
+────────────────────────────────────────
+
+## 🚀 Quick Start
+
+Ensure you have **Python 3** installed for the local dev server.
 
 ```bash
-# clone
+# Clone the repository
 git clone https://github.com/NEO-PROTOCOL/python-2u.git
 cd python-2u
 
-# run locally (no install needed)
+# Start local server (localhost:8000)
 make dev
-# → http://localhost:8000
 ```
 
-Or just open `index.html` directly in your browser. That's it.
+### Build for Distribution
+To generate a clean `dist/` folder for deployment:
+```bash
+make build
+```
 
----
+────────────────────────────────────────
 
-## Tech Stack
-
-| Layer | Choice | Why |
-| :--- | :--- | :--- |
-| Markup | HTML5 Semantic | Zero overhead |
-| Logic | Vanilla JavaScript (`'use strict'`) | No framework tax |
-| Styling | Vanilla CSS + Custom Properties | Full control, no purge issues |
-| Fonts | Fira Code + Nunito + Syne | Google Fonts CDN |
-| Deploy | Render.com Static Site | Free tier, custom domain, auto-deploy |
-| Automation | Makefile | Simple, universal |
-
----
-
-## Project Structure
+## 📂 Project Structure
 
 ```text
 python-2u/
-├── index.html          # App entry point — everything lives here
-├── app.js              # All logic: loader, variants, copy, prank
-├── Makefile            # Dev, build, clean, deploy
-├── render.yaml         # Render.com static site config
-├── images/
-│   ├── neo-smart-factory-horizontal.png
-│   └── neowhite.png
-└── README.md
+├── index.html          # Core structure & SEO metadata
+├── robots.txt          # SEO crawler instructions
+├── favicon.ico         # App icon
+├── Makefile            # Automation (dev, build, clean)
+├── assets/
+│   ├── styles.css      # Design system & variants styling
+│   └── app.js          # App logic & variant generation
+├── images/             # Brand assets & Social images
+└── README.md           # Documentation
 ```
 
----
+────────────────────────────────────────
 
-## Makefile Commands
+## 🔧 Makefile Commands
 
-| Command | Description |
-| :--- | :--- |
-| `make dev` | Starts local server at `localhost:8000` |
-| `make build` | Prepares files for distribution |
-| `make clean` | Removes temp files and cache |
-| `make deploy` | Runs the NEØ Secure Push Protocol |
-
----
-
-## Code Variants
-
-Given the input `"monday without coffee is a crime"`, the app generates:
-
-**01 · variable**
-```python
-# monday without coffee is a crime
-monday_without_coffee_is_a_crime = "monday without coffee is a crime"
-monday_without = True
-
-print(f"{monday_without_coffee_is_a_crime}")
+```text
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ COMMAND       ACTION
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ make dev      Local server at :8000
+┃ make build    Prepare /dist folder
+┃ make clean    Clear temp files
+┃ make status   Check git status
+┃ make deploy   NΞØ Secure Push Protocol
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**04 · try / except**
-```python
-try:
-    monday_without_coffee_is_a()
-    print("✓ monday without coffee is a crime")
-except Exception as e:
-    print(f"erro: {e}")
-finally:
-    import NoCODE.webapp  # sempre python
+────────────────────────────────────────
+
+## 🧬 Code Variants
+
+When you type `"coffee is fuel"`, the app yields:
+
+- **01 · Variable**
+  └─ Standard assignment with f-string printing.
+- **02 · Function**
+  └─ Typed function returning an upper-case string.
+- **03 · Dict / Enum**
+  └─ Mapping words to numeric indices (vibe check).
+- **04 · Try / Except**
+  └─ Error handling wrapper for the phrase action.
+- **05 · List Comprehension**
+  └─ Filtering words into a logic list.
+- **06 · Dataclass**
+  └─ Heavyweight structure representing the "Momento".
+
+────────────────────────────────────────
+
+## 🤝 Contributing
+
+This project is open-source and maintained by **MELLØ** under the **NΞØ Protocol** umbrella.
+
+```text
+1. Fork it.
+2. Branch (git checkout -b feat/new-variant).
+3. Commit (git commit -m 'feat: ...').
+4. Push & PR.
 ```
 
-> Five more variants in the app. Open it and see.
+────────────────────────────────────────
 
----
+## ⚖️ Authorship & Legal
 
-## Contributing
+- **Architecture & Design:**
+  NΞØ MELLØ
+- **Protocol:**
+  NΞØ Protocol
+- **License:**
+  MIT — Build what you want. Ship it. 
+  Just keep the NΞØ credits in the footer.
 
-This project is open-source and sponsored by **MELLØ** under the **NEØ Protocol** umbrella.
-
-PRs are welcome. Keep it vanilla. Keep it sharp.
-
-```bash
-# fork → branch → PR
-git checkout -b feat/your-idea
-git commit -m "feat: your idea"
-git push origin feat/your-idea
-```
-
-Please follow the existing code style — `'use strict'`, no frameworks, descriptive function names, section comments.
-
----
-
-## License
-
-MIT — use it, fork it, ship it. Just keep the NEØ credit somewhere.
-
----
+────────────────────────────────────────
 
 <div align="center">
 
-<br/>
-
-**Sponsored & maintained by**
-
-[![MELLØ](https://img.shields.io/badge/MELLØ-Sponsor-f0883e?style=for-the-badge&labelColor=0d1117)](https://github.com/sponsors/MELLO)
-
-<br/>
-
 <img src="images/neowhite.png" width="80" />
 
-<br/>
-
-**[NEØ PROTOCOL](https://neoprotocol.space)** · neoprotocol.space
+**[NΞØ PROTOCOL](https://neoprotocol.space)** · neoprotocol.space
 
 *"Import NoCODE.webapp"*
 
 <br/>
+
 <iframe src="https://github.com/sponsors/neomello/card" title="Sponsor neomello" height="225" width="600" style="border: 0;"></iframe>
 
-© 2026 NEØ Protocol · MIT License
-
+© 2026 NΞØ Protocol · Built with code by MELLØ
 </div>
