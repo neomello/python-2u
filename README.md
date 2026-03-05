@@ -7,13 +7,17 @@
 
 **Communication between humans would be much clearer if it were code written in Python.**
 
-<div align="center">
+<div>
   <a href="https://github.com/sponsors/neomello">
     <img src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86" alt="Sponsor neomello" height="32">
   </a>
 </div>
 
 ────────────────────────────────────────
+<div align="center">
+    <img src="[https://res.cloudinary.com/dgyocpguk/image/upload/v1772704637/translate_2_python.png"]  height="32">
+  </a>
+</div>
 
 ## 🎯 What is this?
 
