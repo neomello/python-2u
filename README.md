@@ -1,5 +1,7 @@
 <!-- markdownlint-disable MD003 MD007 MD013 MD022 MD023 MD025 MD029 MD032 MD033 MD034 -->
 
+[![Python package](https://github.com/neomello/python-2u/actions/workflows/python-package.yml/badge.svg)](https://github.com/neomello/python-2u/actions/workflows/python-package.yml)
+
 ```text
 █▀▀ █▀█ █▀▄ █▀▀   █▀█ █▄█ ▀█▀ █░█ █▀█ █▄░█   ▀ █  █░█
 █▄▄ █▄█ █▄▀ ██▄   █▀▀ ░█░ ░█░ █▀█ █▄█ █░▀█   █▄▄░ █▄█░
