@@ -17,6 +17,11 @@ coverage/
 dist/favicon.ico
 dist/robots.txt
 
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
 # Editors
 .idea/
 .vscode/

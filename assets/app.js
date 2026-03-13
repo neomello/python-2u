@@ -298,7 +298,7 @@ function buildEmptyState() {
 
 function copyCard(index, button) {
   const element = document.getElementById(`vb-${index}`);
-  if (!element || !navigator.clipboard) return;
+  if (!element) return;
 
   const cloned = element.cloneNode(true);
   cloned.querySelectorAll(".ln").forEach((node) => node.remove());
@@ -307,14 +307,34 @@ function copyCard(index, button) {
     .replace(/\u00a0/g, " ")
     .replace(/\r\n/g, "\n");
 
-  navigator.clipboard.writeText(text).then(() => {
+  function onCopied() {
     button.textContent = "copied ✓";
     button.classList.add("done");
     setTimeout(() => {
       button.textContent = "copy";
       button.classList.remove("done");
     }, 1800);
-  });
+  }
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(onCopied);
+  } else {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    textarea.setAttribute("aria-hidden", "true");
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      if (document.execCommand("copy")) {
+        onCopied();
+      }
+    } finally {
+      document.body.removeChild(textarea);
+    }
+  }
 }
 
 // ── LOADER ────────────────────────────────────────────────────────────────────
